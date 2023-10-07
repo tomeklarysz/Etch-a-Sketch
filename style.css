@@ -22,3 +22,11 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+#reset {
+    border: solid 2px black;
+    border-radius: 4px;
+    height: 3vw;
+    font-size: larger; 
+    /* font-weight: 400; */
+}

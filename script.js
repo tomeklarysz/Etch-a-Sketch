@@ -1,20 +1,41 @@
 const container = document.querySelector('#container');
+const resetButton = document.querySelector('#reset');
+const currentSize = document.querySelector('#currentSize');
 
-function createGrid() {
-    for (let i = 0; i <= 16; i++) {
+let gridSize = 16;
+
+function createGrid(gridSize) {
+    for (let i = 0; i < gridSize; i++) {
     
         const column = document.createElement('div');
         column.setAttribute('class', 'column');
         container.appendChild(column);
         
-        for (let j = 0; j <= 16; j++) {
+        for (let j = 0; j < gridSize; j++) {
             const row = document.createElement('div');
             row.setAttribute('class', 'row');
             column.appendChild(row);
         }
-    
     }
+    let size = `${gridSize} x ${gridSize}`;
+    currentSize.textContent = size;
 }
+
+function resetGrid() {
+    container.innerHTML = "";
+    gridSize = prompt("Choose size of a grid from 0 to 100");
+    console.log(typeof gridSize);
+    console.log(gridSize);
+    if (gridSize > 0 && gridSize <= 100) {
+        createGrid(gridSize);
+        color();
+    } else {
+        console.log("Too big number");
+    }
+    
+}
+
+resetButton.addEventListener('click', resetGrid);
 
 function color() {
     cells = document.querySelectorAll('.row');
@@ -25,5 +46,5 @@ function color() {
     });
 }
 
-createGrid();
+createGrid(gridSize);
 color();
